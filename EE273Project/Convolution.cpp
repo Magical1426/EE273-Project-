@@ -22,14 +22,12 @@ int Convolution::getKernel_size() {
     return this->Kernel_size;
 }
 
-
-
 MatrixXd Convolution::getKernel() {
     return this->kernel;
 }
 
 //Setters
-void Convolution::setConvolution(int stride, int padding, int kernel_size, int inputChannels, int outputChannels) {
+void Convolution::setConvolution(int stride, int padding, int kernel_size) {
     this->Stride = stride;
     this->Padding = padding;
     this->Kernel_size = kernel_size;
@@ -37,9 +35,9 @@ void Convolution::setConvolution(int stride, int padding, int kernel_size, int i
 }
 
 void Convolution::setKernel(MatrixXd kernel) {
-	if (kernel.rows() == this->Kernel_size && kernel.cols() == this->Kernel_size) {
-		this->kernel = kernel;
-	}
+    if (kernel.rows() == this->Kernel_size && kernel.cols() == this->Kernel_size) {
+        this->kernel = kernel;
+    }
 }
 
 

@@ -11,16 +11,13 @@ private:
     int Stride;
     int Padding;
     int Kernel_size;
-    int InputChannels;
-    int OutputChannels;
     Eigen::MatrixXd kernel;
 
 public:
     Convolution();
-
-    Convolution(int Stride, int Padding, int Kernel_size, int InputChannels, int OutputChannels) : Stride(Stride), Padding(Padding), Kernel_size(Kernel_size) {}
-
     ~Convolution();
+
+    Convolution(int Stride, int Padding, int Kernel_size) : Stride(Stride), Padding(Padding), Kernel_size(Kernel_size) {};
 
     int getStride();
     int getPadding();
@@ -29,7 +26,7 @@ public:
     int getOutputChannels();
     Eigen::MatrixXd getKernel();
 
-    void setConvolution(int stride, int padding, int kernel_size, int inputChannels, int outputChannels);
+    void setConvolution(int stride, int padding, int kernel_size);
     void setKernel(Eigen::MatrixXd kernel);
 
     Eigen::MatrixXd start(Eigen::MatrixXd input);

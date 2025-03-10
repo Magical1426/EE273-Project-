@@ -3,13 +3,39 @@
 #include <vector>
 #include "ActivationFunction.h"
 #include "Convolution.h"
+#include "Deconvolution.h"
 
 using namespace Eigen;
 using namespace std;
 
 int main() {
+    MatrixXd input(3, 3);
+    input << 0, 0.56, 0.12,
+        0.91, 0.11, 0.73,
+        1, 0.334, 0.632;
+
+    cout << "Input Matrix:\n" << input << "\n\n";
+
+    
+	MatrixXd kernel(3, 3); //kernal is a 3x3 matrix
+    kernel << 0, 1, 0,
+        1, 0, 1,
+        0, 1, 0;
+
+    cout << "Kernel:\n" << kernel << "\n\n";
+
+    Deconvolution deconv(2, 1, 3);   // Created a Deconvolution layer with stride 2, padding 1, and kernel size 3
+
+    deconv.setKernel(kernel);
+
+    MatrixXd output = deconv.start(input);
+
+    cout << "Deconvolution Output:\n" << output << "\n";
+
+    return 0;
+    /*
     Convolution conv;
-    conv.setConvolution(1, 10, 2, 1, 1); // The stride=1, padding=1, Kernel_size=2
+    conv.setConvolution(1, 1, 2); // The stride=1, padding=1, Kernel_size=2
 
     MatrixXd input(3, 3); //3x3 input matrix
     input << 1, 2, 3,
@@ -25,6 +51,7 @@ int main() {
 
     cout << "Convolution Output:\n" << output << endl;
     cout << "\n";
+*/
 /*
     MatrixXd matrixTest(2, 2);  //this basically creates a 2x2 matrix
     matrixTest(0, 0) = -3;
